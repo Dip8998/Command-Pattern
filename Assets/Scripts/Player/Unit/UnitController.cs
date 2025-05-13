@@ -103,6 +103,8 @@ namespace Command.Player
             unitView.StartCoroutine(MoveToPositionOverTime(battlePosition, moveTime, callback, shouldPlayActionAnimation, actionTypeToExecute));
         }
 
+        public void ProcessUnitCommand(UnitCommand commandToProcess) => GameService.Instance.commandInvoker.ProcessCommand(commandToProcess);
+
         private IEnumerator MoveToPositionOverTime(Vector3 targetPosition, float time, Action callback, bool shouldPlayActionAnimation, CommandType actionTypeToExecute)
         {
             float elapsedTime = 0;

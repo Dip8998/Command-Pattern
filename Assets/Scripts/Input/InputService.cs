@@ -9,7 +9,6 @@ namespace Command.Input
         private MouseInputHandler mouseInputHandler;
 
         private InputState currentState;
-        private CommandType selectedActionType;
         private CommandType selectedCommandType;
         private TargetType targetType;
 
@@ -32,7 +31,7 @@ namespace Command.Input
 
         public void OnActionSelected(CommandType selectedActionType)
         {
-            this.selectedActionType = selectedActionType;
+            this.selectedCommandType = selectedActionType;
             SetInputState(InputState.SELECTING_TARGET);
             TargetType targetType = SetTargetType(selectedActionType);
             ShowTargetSelectionUI(targetType);

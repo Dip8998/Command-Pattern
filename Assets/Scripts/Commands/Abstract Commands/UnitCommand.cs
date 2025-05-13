@@ -16,6 +16,6 @@ namespace Command.Player
 
         public void SetActorUnit(UnitController actorUnit) => this.actorUnit = actorUnit;
 
-        public void SetTargetUnity(UnitController taregtUnit) => this.targetUnit = taregtUnit;
+        public void SetTargetUnit(UnitController taregtUnit) => this.targetUnit = taregtUnit;
     }
 }
