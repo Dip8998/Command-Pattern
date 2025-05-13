@@ -2,11 +2,11 @@
 using Command.Main;
 using Command.Player;
 
-public class AttackStance : UnitCommand
+public class AttackStanceCommand : UnitCommand
 {
     private bool willHitTarget;
 
-    public AttackStance(CommandData commandData)
+    public AttackStanceCommand(CommandData commandData)
     {
         this.commandData = commandData;
         willHitTarget = WillHitTarget();
