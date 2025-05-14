@@ -2,7 +2,10 @@ using UnityEngine;
 
 public interface ICommand
 {
-     void Execute();
+    public void Execute();
+
+    public void Undo();
+
 }
 
 public struct CommandData

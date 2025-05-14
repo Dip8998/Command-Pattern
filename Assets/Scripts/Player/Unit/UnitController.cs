@@ -103,7 +103,7 @@ namespace Command.Player
             unitView.StartCoroutine(MoveToPositionOverTime(battlePosition, moveTime, callback, shouldPlayActionAnimation, actionTypeToExecute));
         }
 
-        public void ProcessUnitCommand(UnitCommand commandToProcess) => GameService.Instance.commandInvoker.ProcessCommand(commandToProcess);
+        public void ProcessUnitCommand(UnitCommand commandToProcess) => GameService.Instance.CommandInvoker.ProcessCommand(commandToProcess);
 
         private IEnumerator MoveToPositionOverTime(Vector3 targetPosition, float time, Action callback, bool shouldPlayActionAnimation, CommandType actionTypeToExecute)
         {
@@ -149,8 +149,11 @@ namespace Command.Player
 
         public void ResetStats() => CurrentPower = unitScriptableObject.Power;
 
-        public void Revive() => SetAliveState(UnitAliveState.ALIVE);
-
+        public void Revive()
+        {
+            SetAliveState(UnitAliveState.ALIVE);
+            unitView.PlayAnimation(UnitAnimations.IDLE);
+        }
         public void Destroy() => UnityEngine.Object.Destroy(unitView.gameObject);
 
         public void ResetUnitIndicator() => unitView.SetUnitIndicator(false);
