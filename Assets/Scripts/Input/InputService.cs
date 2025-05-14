@@ -54,12 +54,10 @@ namespace Command.Input
 
         private CommandData CreateCommandData(UnitController targetUnit)
         {
-            return new CommandData(
-                GameService.Instance.PlayerService.ActiveUnitID,
-                targetUnit.UnitID,
-                GameService.Instance.PlayerService.ActivePlayerID,
-                targetUnit.Owner.PlayerID
-            );
+            return new CommandData(GameService.Instance.PlayerService.ActiveUnitID,
+                                   targetUnit.UnitID,
+                                   GameService.Instance.PlayerService.ActivePlayerID,
+                                   targetUnit.Owner.PlayerID);
         }
 
         private UnitCommand CreateUnitCommand(UnitController targetUnit)
@@ -86,6 +84,5 @@ namespace Command.Input
                     throw new System.Exception($"No Command found of type: {selectedCommandType}");
             }
         }
-
     }
 }
