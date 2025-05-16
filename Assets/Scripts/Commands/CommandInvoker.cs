@@ -9,6 +9,8 @@ public class CommandInvoker
 {
     private Stack<ICommand> commandRegistry = new Stack<ICommand>();
 
+    public CommandInvoker() => SubscribeToEvents();
+
     public void ProcessCommand(ICommand commandToProcess)
     {
         ExecuteCommand(commandToProcess);
@@ -30,5 +32,13 @@ public class CommandInvoker
     private bool CommandBelongsToActivePlayer()
     {
         return (commandRegistry.Peek() as UnitCommand).commandData.ActorPlayerID == GameService.Instance.PlayerService.ActivePlayerID;
+    }
+
+    private void SubscribeToEvents() => GameService.Instance.EventService.OnReplayButtonClicked.AddListener(SetReplayStack);
+
+    public void SetReplayStack()
+    {
+        GameService.Instance.ReplayService.SetCommandStack(commandRegistry);
+        commandRegistry.Clear();
     }
 }
